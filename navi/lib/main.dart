@@ -14,7 +14,7 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getSavedData(context);
+    
     return MaterialApp(
       title: 'flutter nav demo',
       theme: ThemeData(
@@ -23,14 +23,5 @@ class Myapp extends StatelessWidget {
       ),
       home: screen1(),
     );
-  }
-}
-Future getSavedData(BuildContext context)async{
-  final sharedPref=await SharedPreferences.getInstance();
-  final savedValue = sharedPref.getString('saved value');
-  if (savedValue==null){
-    Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
-      return screen1();
-    }));
   }
 }

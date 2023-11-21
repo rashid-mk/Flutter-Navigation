@@ -8,6 +8,7 @@ class screen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getSavedData(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -36,4 +37,13 @@ class screen1 extends StatelessWidget {
      final sharedPrefs=await SharedPreferences.getInstance();
      await sharedPrefs.setString('saved value', _textController.text);
     }
+}
+Future getSavedData(BuildContext context)async{
+  final sharedPref=await SharedPreferences.getInstance();
+  final savedValue = sharedPref.getString('saved value');
+  if (savedValue!=null){
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx){
+      return screen2();
+    }));
+  }
 }
